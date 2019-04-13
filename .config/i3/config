@@ -1,0 +1,193 @@
+### CONSTANTS ###
+set $mod Mod4
+
+set $base00 #101218
+set $base01 #1f222d
+set $base02 #252936
+set $base03 #7780a1
+set $base04 #C0C5CE
+set $base05 #d1d4e0
+set $base06 #C9CCDB
+set $base07 #ffffff
+set $base08 #ee829f
+set $base09 #f99170
+set $base0A #ffefcc
+set $base0B #a5ffe1
+set $base0C #97e0ff
+set $base0D #97bbf7
+set $base0E #c0b7f9
+set $base0F #fcc09e
+set $canary #ffef00
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+set $resize "resize "
+
+font pango: System San Francisco Display 5
+
+### BEHAVIOR ###
+
+# gaps
+for_window [class=".*"] border pixel 2
+gaps inner 10 
+gaps outer 0 
+
+# floating
+floating_modifier $mod
+
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
+
+bindsym $mod+z exec --no-startup-id ~/.config/userscripts/toggle_gaps.sh 
+
+smart_borders on
+hide_edge_borders on
+bindsym $mod+Shift+q kill
+
+bindsym $mod+r mode $resize 
+bindsym $mod+d exec --no-startup-id dmenu_run
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+
+bindsym Mod1+Tab workspace next
+
+# split in horizontal orientation
+bindsym $mod+h split toggle
+
+# split in vertical orientation
+bindsym $mod+v split toggle
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+#bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode $resize {
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+        
+        bindsym Shift+Left resize shrink width 5 px or 5 ppt
+        bindsym Shift+Down resize grow height 5 px or 5 ppt
+        bindsym Shift+Up resize shrink height 5 px or 5 ppt
+        bindsym Shift+Right resize grow width 5 px or 5 ppt
+        
+	bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+
+
+
+# COLORS
+
+# Name			border		background		text		indicator
+client.focused		$canary		$canary			$base07		$base0F
+client.focused_inactive	$base02		$base02			$base03		$base0F
+client.unfocused	$base02		$base02			$base03		$base0F
+
+
+bar {
+        status_command i3blocks
+	font pango: System San Francisco Display, FontAwesome 7	
+	position bottom
+
+	set $base01 #1f222d	
+	colors {
+      		separator $base03
+		background $base01
+		statusline $base05
+		
+		#Name			border	background text
+		focused_workspace  	$base01 $base01    $base07
+		active_workspace   	$base01 $base02    $base03
+		inactive_workspace 	$base01 $base01    $base03
+		urgent_workspace   	$base01 $base01    $base08
+	}
+}
+
+### STARTUP ###
+exec --no-startup-id compton -f
+exec --no-startup-id setxkbmap it
+exec --no-startup-id numlockx on
+exec --no-startup-id xmodmap .Xmodmap 
+
+
+### SCREENSHOTS ###
+bindsym --release Print exec maim  ~/Screenshots/$(date '+%Y-%m-%d--%H%M%S').png 
+bindsym --release Shift+Print exec ~/.config/userscripts/screen_area.sh 
+bindsym --release Ctrl+Print exec  ~/.config/userscripts/screen_window.sh 
+
+
+### BINDINGS ###
+bindsym XF86MonBrightnessUp exec xbacklight +10
+bindsym XF86MonBrightnessDown exec xbacklight -10
+
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-
+bindsym XF86AudioMute exec amixer set Master toggle
+
+bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
+
+bindsym $mod+Shift+l exec --no-startup-id .config/userscripts/lock_screen.sh
+bindsym $mod+Shift+e exec --no-startup-id .config/userscripts/d_shutdown.sh
