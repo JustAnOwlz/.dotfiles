@@ -170,7 +170,7 @@ exec --no-startup-id compton -f
 exec --no-startup-id setxkbmap it
 exec --no-startup-id numlockx on
 exec --no-startup-id xmodmap .Xmodmap 
-
+exec_always --no-startup-id feh --bg-fill --randomize ~/win_storage/Luc/wg_design/sfondi/* 
 
 ### SCREENSHOTS ###
 bindsym --release Print exec maim  ~/Screenshots/$(date '+%Y-%m-%d--%H%M%S').png 
@@ -191,3 +191,4 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
 bindsym $mod+Shift+l exec --no-startup-id .config/userscripts/lock_screen.sh
 bindsym $mod+Shift+e exec --no-startup-id .config/userscripts/d_shutdown.sh
+
