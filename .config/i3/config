@@ -22,7 +22,7 @@ set $canary #ffef00
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
-set $ws4 "4"
+set $ws4 ""
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
@@ -51,6 +51,7 @@ bindsym $mod+z exec --no-startup-id ~/.config/userscripts/toggle_gaps.sh
 smart_borders on
 hide_edge_borders on
 bindsym $mod+Shift+q kill
+focus_follows_mouse no
 
 bindsym $mod+r mode $resize 
 bindsym $mod+d exec --no-startup-id dmenu_run
@@ -116,7 +117,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode $resize {
@@ -148,7 +149,7 @@ client.unfocused	$base02		$base02			$base03		$base0F
 
 bar {
         status_command i3blocks
-	font pango: System San Francisco Display, FontAwesome 7	
+	font pango:FontAwesome, System San Francisco Display 10	
 	position bottom
 
 	set $base01 #1f222d	
@@ -165,30 +166,36 @@ bar {
 	}
 }
 
+### STRANGE BEHAVIORS ###
+for_window [class="music_player"] floating enable
+assign [class="music_player"] $ws5
+
 ### STARTUP ###
 exec --no-startup-id compton -f
+exec --no-startup-id dunst
 exec --no-startup-id setxkbmap it
 exec --no-startup-id numlockx on
 exec --no-startup-id xmodmap .Xmodmap 
 exec_always --no-startup-id feh --bg-fill --randomize ~/win_storage/Luc/wg_design/sfondi/* 
 
 ### SCREENSHOTS ###
-bindsym --release Print exec maim  ~/Screenshots/$(date '+%Y-%m-%d--%H%M%S').png 
+bindsym --release Print exec maim  ~/Screenshots/$(date '+%Y-%m-%d--%H%M%S').png | xclip -selection clipboard -t image/png
 bindsym --release Shift+Print exec ~/.config/userscripts/screen_area.sh 
 bindsym --release Ctrl+Print exec  ~/.config/userscripts/screen_window.sh 
 
 
 ### BINDINGS ###
-bindsym XF86MonBrightnessUp exec xbacklight +10
-bindsym XF86MonBrightnessDown exec xbacklight -10
+bindsym --release XF86MonBrightnessUp exec xbacklight +10; exec pkill -SIGRTMIN+2 i3blocks
+bindsym --release XF86MonBrightnessDown exec xbacklight -10; exec pkill -SIGRTMIN+2 i3blocks
 
-bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
-bindsym XF86AudioLowerVolume exec amixer set Master 5%-
-bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+; exec pkill -SIGRTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-; exec pkill -SIGRTMIN+1 i3blocks
+bindsym XF86AudioMute exec amixer set Master toggle; exec pkill -SIGRTMIN+1 i3blocks
 
-bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
-bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release Caps_Lock exec pkill -SIGRTMIN+3 i3blocks
+bindsym --release Num_Lock  exec pkill -SIGRTMIN+3 i3blocks
 
-bindsym $mod+Shift+l exec --no-startup-id .config/userscripts/lock_screen.sh
-bindsym $mod+Shift+e exec --no-startup-id .config/userscripts/d_shutdown.sh
+bindsym $mod+Shift+l exec --no-startup-id ~/.config/userscripts/lock_screen.sh
+bindsym $mod+Shift+w exec --no-startup-id ~/.config/userscripts/d_shutdown.sh
 
+bindsym --release XF86AudioPlay exec ~/.config/userscripts/cmus_playpause.sh
