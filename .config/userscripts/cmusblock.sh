@@ -1,7 +1,9 @@
 #!/bin/sh
 
-if ! pgrep -x cmus ; then
-  termite -e cmus
-else
-  cmus-remote -u
-fi
+while test $# -ge 2
+do
+	eval _$1='$2'
+	shift
+	shift
+done
+echo "[$_status] $_artist - $_title"

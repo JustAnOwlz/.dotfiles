@@ -22,7 +22,7 @@ set $canary #ffef00
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
-set $ws4 ""
+set $ws4 "5"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
@@ -149,7 +149,7 @@ client.unfocused	$base02		$base02			$base03		$base0F
 
 bar {
         status_command i3blocks
-	font pango:FontAwesome, System San Francisco Display 10	
+	font pango: System San Francisco Display, FontAwesome 10	
 	position bottom
 
 	set $base01 #1f222d	
@@ -198,4 +198,6 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+3 i3blocks
 bindsym $mod+Shift+l exec --no-startup-id ~/.config/userscripts/lock_screen.sh
 bindsym $mod+Shift+w exec --no-startup-id ~/.config/userscripts/d_shutdown.sh
 
-bindsym --release XF86AudioPlay exec ~/.config/userscripts/cmus_playpause.sh
+bindsym --release XF86AudioPlay exec ~/.config/userscripts/music_bindings.sh pp
+bindsym --release XF86AudioNext exec ~/.config/userscripts/music_bindings.sh next
+bindsym --release XF86AudioPrec exec ~/.config/userscripts/music_bindings.sh prec
