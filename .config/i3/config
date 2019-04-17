@@ -200,4 +200,4 @@ bindsym $mod+Shift+w exec --no-startup-id ~/.config/userscripts/d_shutdown.sh
 
 bindsym --release XF86AudioPlay exec ~/.config/userscripts/music_bindings.sh pp
 bindsym --release XF86AudioNext exec ~/.config/userscripts/music_bindings.sh next
-bindsym --release XF86AudioPrec exec ~/.config/userscripts/music_bindings.sh prec
+bindsym --release XF86AudioPrev exec ~/.config/userscripts/music_bindings.sh prec

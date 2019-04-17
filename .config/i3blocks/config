@@ -24,7 +24,7 @@ interval=60
 signal=4
 
 [cmusblock]
-interval=once
+interval=0
 signal=5
 
 [time]

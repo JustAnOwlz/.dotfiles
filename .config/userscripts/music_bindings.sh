@@ -5,14 +5,14 @@ case $1 in
 		if ! pgrep -x cmus ; then
 			termite --class="music_player" -e cmus
 		else
-			cmus-remote -u
+			cmus-remote --pause # toggles pause
 		fi
 	;;
 	next)
-		cmus-remote -n
+		cmus-remote --next
 	;;
 	prec)
-		cmus-remote -p
+		cmus-remote --prev
 	;;
 	*)
 		echo "don't know"
