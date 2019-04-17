@@ -3,7 +3,7 @@
 case $1 in
 	pp)
 		if ! pgrep -x cmus ; then
-			termite --class="music_player" -e cmus
+			termite --title="music_player" -e cmus
 		else
 			cmus-remote --pause # toggles pause
 		fi
