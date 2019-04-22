@@ -1,5 +1,7 @@
 command=~/.config/userscripts/$BLOCK_NAME.sh
 separator_block_width=15
+align=center
+min_width=40
 
 [volumeblock]
 interval=once
@@ -27,6 +29,12 @@ signal=4
 interval=0
 signal=5
 
+[wheaterblock]
+command=curl 'wttr.in/Avellino?format=%l:+%c+%t'
+interval=3600
+
 [time]
-command=date '+%Y-%m-%d %H:%M'
+command=date '+%a %d %b %y - %H:%M' | sed -r 's/(.)([^ ]* [^ ]* )(.)(.*)$/\u\1\2\u\3\4/'
 interval=50
+align=center
+min_width=155

@@ -32,7 +32,7 @@ set $ws10 "10"
 
 set $resize "resize "
 
-font pango: System San Francisco Display 5
+font pango: FuraCodeNerdFontCompleteM-Regular 8
 
 ### BEHAVIOR ###
 
@@ -54,7 +54,7 @@ bindsym $mod+Shift+q kill
 focus_follows_mouse no
 
 bindsym $mod+r mode $resize 
-bindsym $mod+d exec --no-startup-id dmenu_run
+# bindsym $mod+d exec --no-startup-id dmenu_run
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -149,7 +149,7 @@ client.unfocused	$base02		$base02			$base03		$base0F
 
 bar {
         status_command i3blocks
-	font pango: System San Francisco Display, FontAwesome 10	
+	font pango: FuraCodeNerdFontCompleteM-Regular 10
 	position bottom
 
 	set $base01 #1f222d	
@@ -170,13 +170,15 @@ bar {
 for_window [title="music_player"] floating enable
 assign [title="music_player"] $ws5
 
+for_window [title="fzf-menu"] floating enable
+
 ### STARTUP ###
 exec --no-startup-id compton -f
 exec --no-startup-id dunst
 exec --no-startup-id setxkbmap it
 exec --no-startup-id numlockx on
 exec --no-startup-id xmodmap .Xmodmap 
-exec_always --no-startup-id feh --bg-fill --randomize ~/win_storage/Luc/wg_design/sfondi/* 
+exec --no-startup-id hsetroot -add "#c79081" -add "#dfa579" -gradient 0
 
 ### SCREENSHOTS ###
 bindsym --release Print exec maim  ~/Screenshots/$(date '+%Y-%m-%d--%H%M%S').png | xclip -selection clipboard -t image/png
@@ -201,3 +203,6 @@ bindsym $mod+Shift+w exec --no-startup-id ~/.config/userscripts/d_shutdown.sh
 bindsym --release XF86AudioPlay exec ~/.config/userscripts/music_bindings.sh pp
 bindsym --release XF86AudioNext exec ~/.config/userscripts/music_bindings.sh next
 bindsym --release XF86AudioPrev exec ~/.config/userscripts/music_bindings.sh prec
+
+### BETTER DMENU ###
+bindsym $mod+d exec --no-startup-id termite -t 'fzf-menu' -e 'i3-dmenu-desktop --dmenu=fzf'
