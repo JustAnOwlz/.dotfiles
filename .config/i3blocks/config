@@ -37,4 +37,4 @@ interval=3600
 command=date '+%a %d %b %y - %H:%M' | sed -r 's/(.)([^ ]* [^ ]* )(.)(.*)$/\u\1\2\u\3\4/'
 interval=50
 align=center
-min_width=155
+min_width=170

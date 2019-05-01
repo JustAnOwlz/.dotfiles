@@ -14,5 +14,7 @@ set ruler
 set cursorline
 set encoding=UTF-8
 
+set clipboard=unnamed,unnamedplus
+
 syntax on
 

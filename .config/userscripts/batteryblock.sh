@@ -11,3 +11,6 @@ else
 	echo "💯%"
 fi
 
+if [[ $batt_level < "10" ]]; then
+	notify-send -u critical "BATTERY LOW" "CHARGE NOW"
+fi

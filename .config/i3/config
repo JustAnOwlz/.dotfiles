@@ -23,7 +23,7 @@ set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
-set $ws5 "5 🎶"
+set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
@@ -32,7 +32,7 @@ set $ws10 "10"
 
 set $resize "resize "
 
-font pango: FuraCodeNerdFontCompleteM-Regular 8
+font pango: FuraCode Nerd Font Mono 8
 
 ### BEHAVIOR ###
 
@@ -149,7 +149,7 @@ client.unfocused	$base02		$base02			$base03		$base0F
 
 bar {
         status_command i3blocks
-	font pango: FuraCodeNerdFontCompleteM-Regular 10
+	font pango: FuraCode Nerd Font Mono 10
 	position bottom
 
 	set $base01 #1f222d	
@@ -166,19 +166,32 @@ bar {
 	}
 }
 
+
+### SCRATCHPAD ###
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+bindsym $mod+n [title="Telegram"] scratchpad show
+bindsym $mod+m [title="music_player"] scratchpad show
+
+
 ### STRANGE BEHAVIORS ###
 for_window [title="music_player"] floating enable
-assign [title="music_player"] $ws5
-
 for_window [title="fzf-menu"] floating enable
+for_window [title="fzf-menu"] resize set 450 225
+for_window [title="fzf-menu"] move position center 
+for_window [title="Telegram"] floating enable; \
+ resize set 300 600; \
+ move position center; \
+ move scratchpad
 
 ### STARTUP ###
-exec --no-startup-id compton -f
-exec --no-startup-id dunst
+exec_always --no-startup-id compton
+exec_always --no-startup-id dunst
 exec --no-startup-id setxkbmap it
 exec --no-startup-id numlockx on
 exec --no-startup-id xmodmap .Xmodmap 
 exec --no-startup-id hsetroot -add "#c79081" -add "#dfa579" -gradient 0
+
 
 ### SCREENSHOTS ###
 bindsym --release Print exec maim  ~/Screenshots/$(date '+%Y-%m-%d--%H%M%S').png | xclip -selection clipboard -t image/png
@@ -204,5 +217,6 @@ bindsym --release XF86AudioPlay exec ~/.config/userscripts/music_bindings.sh pp
 bindsym --release XF86AudioNext exec ~/.config/userscripts/music_bindings.sh next
 bindsym --release XF86AudioPrev exec ~/.config/userscripts/music_bindings.sh prec
 
+
 ### BETTER DMENU ###
-bindsym $mod+d exec --no-startup-id termite -t 'fzf-menu' -e 'i3-dmenu-desktop --dmenu=fzf'
+bindsym $mod+d exec --no-startup-id termite -t "fzf-menu" -e "i3-dmenu-desktop --dmenu='fzf --reverse'"
