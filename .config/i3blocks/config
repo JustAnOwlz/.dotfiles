@@ -30,7 +30,7 @@ interval=0
 signal=5
 
 [wheaterblock]
-command=curl 'wttr.in/Avellino?format=%l:+%c+%t'
+command=curl 'wttr.in/Avellino?format=%c+%t'
 interval=3600
 
 [time]

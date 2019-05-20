@@ -2,11 +2,11 @@
 
 is_playing=$(cmus-remote -Q | head -1 | cut -d ' ' -f 2)
 
-if [[ $? != 0 ]]; then
+if [[ $? != 0 || $is_played == "stopped" ]]; then
 	exit 0
 fi
 
-if [[ $is_playing == "paused" || $is_playing == "stopped" ]]; then
+if [[ $is_playing == "paused" ]]; then
 	output="⏸️ "
 elif [[ $is_playing == "playing" ]]; then
 	output="▶️ "
@@ -23,4 +23,3 @@ if [ ${#artist} -gt 15 ];then artist="${artist:0:15}..";fi
 
 echo "$output $artist - $s_numb $s_name"
 
-	

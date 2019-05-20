@@ -8,10 +8,13 @@ case $1 in
 			cmus-remote --pause # toggles pause
 		fi
 	;;
+	stop)
+		cmus-remote --stop
+	;;
 	next)
 		cmus-remote --next
 	;;
-	prec)
+	prev)
 		cmus-remote --prev
 	;;
 	*)

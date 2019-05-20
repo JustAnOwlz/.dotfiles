@@ -17,7 +17,7 @@ set $base0C #97e0ff
 set $base0D #97bbf7
 set $base0E #c0b7f9
 set $base0F #fcc09e
-set $canary #ffef00
+set $cyano #00ff91
 
 set $ws1 "1"
 set $ws2 "2"
@@ -31,8 +31,6 @@ set $ws9 "9"
 set $ws10 "10"
 
 set $resize "resize "
-
-font pango: FuraCode Nerd Font Mono 8
 
 ### BEHAVIOR ###
 
@@ -113,6 +111,17 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+### workspaces and screens ###
+workspace $ws1  output eDP1 
+workspace $ws2  output eDP1
+workspace $ws3  output eDP1
+workspace $ws4  output eDP1
+workspace $ws5  output eDP1
+workspace $ws6  output HDMI1
+workspace $ws7  output HDMI1
+workspace $ws8  output HDMI1
+workspace $ws9  output HDMI1
+workspace $ws10 output HDMI1
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
@@ -142,13 +151,12 @@ mode $resize {
 # COLORS
 
 # Name			border		background		text		indicator
-client.focused		$canary		$canary			$base07		$base0F
+client.focused		$cyano		$cyano			$base07		$base0F
 client.focused_inactive	$base02		$base02			$base03		$base0F
 client.unfocused	$base02		$base02			$base03		$base0F
 
-
 bar {
-        status_command i3blocks
+    status_command i3blocks
 	font pango: FuraCode Nerd Font Mono 10
 	position bottom
 
@@ -179,24 +187,26 @@ for_window [title="music_player"] floating enable
 for_window [title="fzf-menu"] floating enable
 for_window [title="fzf-menu"] resize set 450 225
 for_window [title="fzf-menu"] move position center 
-for_window [title="Telegram"] floating enable; \
- resize set 300 600; \
- move position center; \
+for_window [class="^telegram-desktop$"] floating enable; \
+ resize set 380 480; \
+ move position 65 65; \
  move scratchpad
 
 ### STARTUP ###
 exec_always --no-startup-id compton
 exec_always --no-startup-id dunst
+exec_always --no-startup-id hsetroot -add "#f4786c" -add "#ff7f00" -gradient 0
+
 exec --no-startup-id setxkbmap it
 exec --no-startup-id numlockx on
 exec --no-startup-id xmodmap .Xmodmap 
-exec --no-startup-id hsetroot -add "#c79081" -add "#dfa579" -gradient 0
 
 
 ### SCREENSHOTS ###
 bindsym --release Print exec maim  ~/Screenshots/$(date '+%Y-%m-%d--%H%M%S').png | xclip -selection clipboard -t image/png
 bindsym --release Shift+Print exec ~/.config/userscripts/screen_area.sh 
 bindsym --release Ctrl+Print exec  ~/.config/userscripts/screen_window.sh 
+bindsym --release Shift+Mod+Print exec  ~/.config/userscripts/rec_video.sh 
 
 
 ### BINDINGS ###
@@ -215,7 +225,7 @@ bindsym $mod+Shift+w exec --no-startup-id ~/.config/userscripts/d_shutdown.sh
 
 bindsym --release XF86AudioPlay exec ~/.config/userscripts/music_bindings.sh pp
 bindsym --release XF86AudioNext exec ~/.config/userscripts/music_bindings.sh next
-bindsym --release XF86AudioPrev exec ~/.config/userscripts/music_bindings.sh prec
+bindsym --release XF86AudioPrev exec ~/.config/userscripts/music_bindings.sh prev
 
 
 ### BETTER DMENU ###
