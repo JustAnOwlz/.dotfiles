@@ -4,7 +4,7 @@ export ZSH="/home/luca/.oh-my-zsh"
 
 ZSH_THEME="terminalpartied"
 
- DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -23,7 +23,7 @@ ZSH_THEME="terminalpartied"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -33,10 +33,10 @@ ZSH_THEME="terminalpartied"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
-
+source $ZSH/custom/plugins/zsh-notes/notes.plugin.zsh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -63,6 +63,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+bindkey '^N' notes-edit-widget
+export EDITOR=/usr/bin/vim
+
 alias tb="nc termbin.com 9999"
 alias cclip="xclip -selection clipboard"
 alias pclip="xclip -selection clipboard -o"
+alias feh='feh --quiet --verbose --keep-zoom-vp --action "nrm %F"'
+alias nnn='nnn -d'

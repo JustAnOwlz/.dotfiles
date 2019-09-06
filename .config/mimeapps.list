@@ -1,0 +1,39 @@
+[Added Associations]
+application/sql=mysql-workbench.desktop;
+text/csv=nvim.desktop;
+image/png=feh.desktop;
+video/x-matroska=mpv.desktop;
+video/mpeg=mpv.desktop;
+text/plain=nvim.desktop;
+application/pdf=org.pwmt.zathura.desktop;
+video/mp4=mpv.desktop;
+text/x-java=nvim.desktop;vim.desktop;
+application/octet-stream=mpv.desktop;
+application/x-mobipocket-ebook=calibre-ebook-viewer.desktop;
+image/jpeg=feh.desktop;userapp-"feh --keep-zoom-vp"-7YLW4Z.desktop;
+x-scheme-handler/http=firefox.desktop;
+x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/ftp=firefox.desktop;
+x-scheme-handler/chrome=firefox.desktop;
+text/html=firefox.desktop;
+application/x-extension-htm=firefox.desktop;
+application/x-extension-html=firefox.desktop;
+application/x-extension-shtml=firefox.desktop;
+application/xhtml+xml=firefox.desktop;
+application/x-extension-xhtml=firefox.desktop;
+application/x-extension-xht=firefox.desktop;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=calibre-ebook-viewer.desktop;
+
+[Default Applications]
+x-scheme-handler/http=firefox.desktop;
+x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/ftp=firefox.desktop;
+x-scheme-handler/chrome=firefox.desktop;
+text/html=firefox.desktop;
+application/x-extension-htm=firefox.desktop;
+application/x-extension-html=firefox.desktop;
+application/x-extension-shtml=firefox.desktop;
+application/xhtml+xml=firefox.desktop;
+application/x-extension-xhtml=firefox.desktop;
+application/x-extension-xht=firefox.desktop;
+application/pdf=org.pwmt.zathura.desktop;
