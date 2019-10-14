@@ -1,4 +1,4 @@
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/luca/.local/bin
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/luca/.local/bin:$HOME/.cabal/bin:${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/bin:$PATH
 
 export ZSH="/home/luca/.oh-my-zsh"
 
@@ -66,8 +66,9 @@ source $ZSH/custom/plugins/zsh-notes/notes.plugin.zsh
 bindkey '^N' notes-edit-widget
 export EDITOR=/usr/bin/vim
 
+alias l="ls -lh --color --group-directories-first"
 alias tb="nc termbin.com 9999"
 alias cclip="xclip -selection clipboard"
 alias pclip="xclip -selection clipboard -o"
 alias feh='feh --quiet --verbose --keep-zoom-vp --action "nrm %F"'
-alias nnn='nnn -d'
+

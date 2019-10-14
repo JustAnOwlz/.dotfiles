@@ -37,7 +37,7 @@ font pango: monospace 9
 ### BEHAVIOR ###
 
 # gaps
-for_window [class=".*"] border pixel 2
+for_window [class=".*"] border pixel 2 
 gaps inner 10 
 gaps outer 0 
 
@@ -132,19 +132,19 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode $resize {
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-        
-        bindsym Shift+Left resize shrink width 5 px or 5 ppt
-        bindsym Shift+Down resize grow height 5 px or 5 ppt
-        bindsym Shift+Up resize shrink height 5 px or 5 ppt
-        bindsym Shift+Right resize grow width 5 px or 5 ppt
-        
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    bindsym Shift+Left resize shrink width 5 px or 5 ppt
+    bindsym Shift+Down resize grow height 5 px or 5 ppt
+    bindsym Shift+Up resize shrink height 5 px or 5 ppt
+    bindsym Shift+Right resize grow width 5 px or 5 ppt
+
 	bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 
