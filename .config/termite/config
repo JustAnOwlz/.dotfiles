@@ -1,3 +1,7 @@
+[options]
+# font = BlexMono Nerd Font Mono 11
+font = mononoki Nerd Font Mono 12
+
 [colors]
 # Base16 Default Dark
 # Author: Chris Kempson (http://chriskempson.com)

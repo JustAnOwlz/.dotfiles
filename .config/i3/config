@@ -201,6 +201,7 @@ exec_always --no-startup-id compton
 exec_always --no-startup-id dunst
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id hsetroot -add "#f4786c" -add "#ff7f00" -gradient 0
+exec_always --no-startup-id xcape -e 'Ctrl_L=Escape'
 
 exec --no-startup-id setxkbmap it
 exec --no-startup-id numlockx on
