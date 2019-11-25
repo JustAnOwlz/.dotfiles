@@ -31,6 +31,7 @@ set $ws9 "9"
 set $ws10 "10"
 
 set $resize "resize "
+set $luncher "(f)irefox, (d)iscord"
 
 font pango: monospace 9
 
@@ -47,6 +48,7 @@ floating_modifier $mod
 bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
 bindsym $mod+z exec --no-startup-id ~/.config/userscripts/toggle_gaps.sh 
+bindsym $mod+Shift+z bar mode toggle 
 
 smart_borders on
 hide_edge_borders on
@@ -54,6 +56,7 @@ bindsym $mod+Shift+q kill
 focus_follows_mouse no
 
 bindsym $mod+r mode $resize 
+bindsym $mod+s mode $luncher
 # bindsym $mod+d exec --no-startup-id dmenu_run
 
 bindsym $mod+Left focus left
@@ -147,6 +150,18 @@ mode $resize {
     bindsym $mod+r mode "default"
 }
 
+# Quick application luncher
+mode $luncher {
+    bindsym --release p exec /bin/firefox --private; mode "default"
+    bindsym --release f exec /bin/firefox; mode "default"
+    bindsym --release d exec /bin/discord; mode "default"
+    
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod mode "default"
+}
+
+
 
 
 
@@ -201,7 +216,7 @@ exec_always --no-startup-id compton
 exec_always --no-startup-id dunst
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id hsetroot -add "#f4786c" -add "#ff7f00" -gradient 0
-exec_always --no-startup-id xcape -e 'Ctrl_L=Escape'
+# exec_always --no-startup-id xcape -e 'Control_L=Escape'
 
 exec --no-startup-id setxkbmap it
 exec --no-startup-id numlockx on
